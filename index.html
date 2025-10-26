@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DailyDash — PWA Prototype</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="DailyDash">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='100%25' height='100%25' fill='%231976d2'/%3E%3Ctext x='50%25' y='55%25' font-size='18' text-anchor='middle' fill='white' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E">
+
+</head>
+<body>
+  <nav class="blue">
+    <div class="nav-wrapper container">
+      <a href="#!" class="brand-logo">DailyDash</a>
+      <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a id="installBtn" href="#!">Install</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#habits">Habits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-sidenav">
+    <li><div class="user-view">
+      <div class="background blue lighten-2"></div>
+      <a href="#user"><img class="circle" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='100%25' height='100%25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='55%25' font-size='28' text-anchor='middle' fill='%231976d2' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E"></a>
+      <a href="#name"><span class="white-text name">Guest</span></a>
+      <a href="#email"><span class="white-text email">guest@example.com</span></a>
+    </div></li>
+    <li><a href="#today"><i class="material-icons">today</i>Today</a></li>
+    <li><a href="#habits"><i class="material-icons">track_changes</i>Habits</a></li>
+    <li><a href="#notes"><i class="material-icons">note</i>Notes</a></li>
+    <li><a id="clearBtn"><i class="material-icons">delete_forever</i>Clear Local Data</a></li>
+  </ul>
+
+  <main class="container" style="margin-top: 24px;">
+    <div id="offlineBanner" class="card red lighten-4 hide">
+      <div class="card-content">
+        <span class="card-title">Offline</span>
+        <p>You are currently offline. The app will continue to work using cached data.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m8">
+        <h5>Today's Tasks</h5>
+
+        <div id="tasksList" class="row">
+
+        </div>
+
+        <a class="waves-effect waves-light btn modal-trigger" href="#addTaskModal"><i class="material-icons left">add</i>Add Task</a>
+      </div>
+
+      <div class="col s12 m4">
+        <h5 id="habits">Habits</h5>
+        <ul id="habitList" class="collection">
+        </ul>
+
+        <h6 id="notes" style="margin-top: 1.5rem;">Quick Notes</h6>
+        <div id="quickNotes" class="card">
+          <div class="card-content">
+            <div class="input-field">
+              <textarea id="noteText" class="materialize-textarea"></textarea>
+              <label for="noteText">Write a quick note</label>
+            </div>
+            <a id="saveNoteBtn" class="waves-effect waves-light btn">Save Note</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5>Featured</h5>
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&q=60" alt="placeholder image">
+            <span class="card-title">Focus Mode</span>
+          </div>
+          <div class="card-content">
+            <p>Enable Focus Mode to temporarily mute reminders and reduce cognitive load while finishing a task.</p>
+          </div>
+          <div class="card-action">
+            <a href="#!">Learn more</a>
+            <a href="#!" class="modal-trigger" data-target="demoModal">Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-content">
+            <span class="card-title">Quick Stats</span>
+            <p id="statsText">You completed 0 tasks today.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="addTaskModal" class="modal">
+    <div class="modal-content">
+      <h4>Add Task</h4>
+      <div class="row">
+        <form id="taskForm" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="taskTitle" type="text" required>
+              <label for="taskTitle">Task title</label>
+            </div>
+            <div class="input-field col s12">
+              <textarea id="taskNotes" class="materialize-textarea"></textarea>
+              <label for="taskNotes">Notes</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="taskDue" type="date">
+              <label for="taskDue" class="active">Due date</label>
+            </div>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
+  <div id="demoModal" class="modal">
+    <div class="modal-content">
+      <h4>Demo</h4>
+      <p>This is a functional PWA demo. Try installing (Install button) and then go offline to test caching.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+
+    navigator.serviceWorker.register('./sw.js')
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  }
+</script>
+
+</body>
+</html>

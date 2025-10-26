@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline | DailyDash</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(145deg, #e6e9f0, #eef1f5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .offline-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      max-width: 340px;
+    }
+
+    .offline-box img {
+      width: 70px;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      color: #567df4;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    button {
+      margin-top: 18px;
+      width: 100%;
+      background: #567df4;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="offline-box">
+    <img src="images/offline-icon.png" alt="Offline Icon">
+    <h2>You’re Offline</h2>
+    <p>No internet connection detected.<br>
+       You can still view cached content!</p>
+    <button onclick="window.location.reload()">Try Again</button>
+  </div>
+</body>
+</html>

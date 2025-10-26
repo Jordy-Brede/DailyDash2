@@ -1,0 +1,98 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* App container */
+body {
+  background: #f4f6f9;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* Card-style layout */
+.container {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Section titles */
+h1, h2 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Soft divider */
+.divider {
+  height: 1px;
+  background: #e7e7e7;
+  margin: 20px 0;
+}
+
+/* Form + inputs */
+input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  margin-top: 8px;
+  background: #fafafa;
+}
+
+input:focus, textarea:focus {
+  border-color: #567df4;
+  outline: none;
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(86,125,244,0.4);
+}
+
+/* Buttons */
+button {
+  background: #567df4;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #3f60d1;
+  transform: translateY(-1px);
+}
+
+/* List items/cards */
+.task-card {
+  margin-top: 14px;
+  padding: 14px;
+  background: #fafbff;
+  border: 1px solid #e1e7ff;
+  border-radius: 8px;
+}
+
+/* Empty state helper */
+.empty-state {
+  text-align: center;
+  color: #9ca3af;
+  margin: 40px 0;
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  margin-top: 25px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #818181;
+}
