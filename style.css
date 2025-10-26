@@ -16,6 +16,24 @@ body {
   padding: 30px;
 }
 
+.brand-logo {
+  z-index: 1001;
+  position: relative;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* ensure navbar is above other elements */
+}
+
+main.container {
+  margin-top: 72px; /* push content below fixed navbar */
+}
+
+
 /* Card-style layout */
 .container {
   width: 100%;
@@ -102,7 +120,14 @@ input, textarea {
 }
 .sidenav {
   background: #fafbfd;
-  border-right: 1px solid rgba(0,0,0,0.1);}
+  border-right: 1px solid rgba(0,0,0,0.1);
+  z-index: 1100; /* above navbar if needed */
+  overflow-y: auto; /* scroll if content is long */
+}
+
+.sidenav li {
+  line-height: 48px; /* consistent spacing */
+}
 
 input:focus, textarea:focus {
   border-color: #567df4;
