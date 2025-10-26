@@ -56,6 +56,14 @@ body {
 }
 .row {
   margin-bottom: 26px;
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+.row .col {
+  padding-left: 8px;   /* reduce default padding */
+  padding-right: 8px;
 }
 
 /* Section titles */
@@ -141,4 +149,11 @@ footer {
   font-size: 0.8rem;
   text-align: center;
   color: #818181;
+}
+.section-background {
+  background: #ffffff;
+  padding: 12px;       /* reduced from 14px */
+  border-radius: 8px;  /* slightly smaller */
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 16px; /* reduced from 18px */
 }
