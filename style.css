@@ -6,7 +6,7 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
-/* App container */
+
 body {
   background: #9a9a9a;
   font-family: 'Roboto', sans-serif;
@@ -14,7 +14,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 30px;
-  padding-top: 72px; /* leave space for navbar */
+  padding-top: 72px; 
 }
 
 .brand-logo {
@@ -34,8 +34,7 @@ nav {
 .container {
   width: 100%;
   max-width: 600px;
-   margin-top: 72px; /* push content below fixed navbar */
-  background: #ffffff;
+   margin-top: 72px; 
   padding: 25px;
   border-radius: 14px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
