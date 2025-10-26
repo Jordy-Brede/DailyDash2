@@ -142,11 +142,3 @@ footer {
   text-align: center;
   color: #818181;
 }
-/* Soft section backgrounds */
-.section-background {
-  background: #ffffff;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.05);
-  margin-bottom: 18px;
-}
