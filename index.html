@@ -1,72 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>DailyDash — PWA Prototype</title>
+<main class="container" style="margin-top: 24px;">
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#1976d2"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="DailyDash">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='100%25' height='100%25' fill='%231976d2'/%3E%3Ctext x='50%25' y='55%25' font-size='18' text-anchor='middle' fill='white' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E">
-
-</head>
-<body>
-  <nav class="blue">
-    <div class="nav-wrapper container">
-      <a href="#!" class="brand-logo">DailyDash</a>
-      <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a id="installBtn" href="#!">Install</a></li>
-        <li><a href="#notes">Notes</a></li>
-        <li><a href="#habits">Habits</a></li>
-      </ul>
+  <div id="offlineBanner" class="card red lighten-4 hide">
+    <div class="card-content">
+      <span class="card-title">Offline</span>
+      <p>You are currently offline. The app will continue to work using cached data.</p>
     </div>
-  </nav>
+  </div>
 
-  <ul class="sidenav" id="mobile-sidenav">
-    <li><div class="user-view">
-      <div class="background blue lighten-2"></div>
-      <a href="#user"><img class="circle" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='100%25' height='100%25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='55%25' font-size='28' text-anchor='middle' fill='%231976d2' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E"></a>
-      <a href="#name"><span class="white-text name">Guest</span></a>
-      <a href="#email"><span class="white-text email">guest@example.com</span></a>
-    </div></li>
-    <li><a href="#today"><i class="material-icons">today</i>Today</a></li>
-    <li><a href="#habits"><i class="material-icons">track_changes</i>Habits</a></li>
-    <li><a href="#notes"><i class="material-icons">note</i>Notes</a></li>
-    <li><a id="clearBtn"><i class="material-icons">delete_forever</i>Clear Local Data</a></li>
-  </ul>
+  <div class="row">
 
-  <main class="container" style="margin-top: 24px;">
-    <div id="offlineBanner" class="card red lighten-4 hide">
-      <div class="card-content">
-        <span class="card-title">Offline</span>
-        <p>You are currently offline. The app will continue to work using cached data.</p>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col s12 m8">
+    <div class="col s12 m8">
+      <div class="section-background">
         <h5>Today's Tasks</h5>
+        
+        <div id="tasksList" class="row"></div>
 
-        <div id="tasksList" class="row">
+        <a class="waves-effect waves-light btn modal-trigger" href="#addTaskModal">
+          <i class="material-icons left">add</i>Add Task
+        </a>
+      </div>
+    </div>
 
-        </div>
 
-        <a class="waves-effect waves-light btn modal-trigger" href="#addTaskModal"><i class="material-icons left">add</i>Add Task</a>
+    <div class="col s12 m4">
+
+      <div class="section-background" style="margin-bottom: 24px;">
+        <h5 id="habits">Habits</h5>
+        <ul id="habitList" class="collection"></ul>
       </div>
 
-      <div class="col s12 m4">
-        <h5 id="habits">Habits</h5>
-        <ul id="habitList" class="collection">
-        </ul>
-
-        <h6 id="notes" style="margin-top: 1.5rem;">Quick Notes</h6>
-        <div id="quickNotes" class="card">
-          <div class="card-content">
+      <div class="section-background">
+        <h6 id="notes">Quick Notes</h6>
+        <div id="quickNotes" class="card" style="margin:0; box-shadow:none; border:none;">
+          <div class="card-content" style="padding:0;">
             <div class="input-field">
               <textarea id="noteText" class="materialize-textarea"></textarea>
               <label for="noteText">Write a quick note</label>
@@ -75,8 +42,11 @@
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
+  </div>
+
+  <div class="section-background">
     <h5>Featured</h5>
     <div class="row">
       <div class="col s12 m6">
@@ -104,8 +74,9 @@
         </div>
       </div>
     </div>
+  </div>
 
-  </main>
+</main>
 
   <div id="addTaskModal" class="modal">
     <div class="modal-content">

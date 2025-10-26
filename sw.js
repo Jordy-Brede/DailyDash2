@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'daily-dash-v1';
+const CACHE_NAME = "daily-dash-cache-v3";
 const OFFLINE_URL = 'offline.html';
 
 const ASSETS = [
@@ -8,6 +8,7 @@ const ASSETS = [
   '/styles.css',
   '/app.js',
   '/manifest.json',
+
   // Materialize assets via CDN may not be cached unless requested — we include CDN urls:
   //'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css',
  // 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js',

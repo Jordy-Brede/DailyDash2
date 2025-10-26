@@ -8,7 +8,7 @@
 
 /* App container */
 body {
-  background: #f4f6f9;
+  background: #f7f9fc;
   color: #222;
   display: flex;
   justify-content: center;
@@ -25,10 +25,49 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
+.collection .collection-item {
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.collection .collection-item:hover {
+  background: rgba(25,118,210,0.05);
+}
+
+#quickNotes {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+}
+
+@media(min-width: 992px) {
+  .row .col.m8 {
+    border-right: 1px solid rgba(0,0,0,0.10);
+  }
+}
+.task-card {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #ffffff;
+}
+.btn {
+  border-radius: 8px;
+}
+.row {
+  margin-bottom: 26px;
+}
+
 /* Section titles */
 h1, h2 {
   margin-bottom: 10px;
   font-weight: 700;
+}
+
+h5, h6 {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
 }
 
 /* Soft divider */
@@ -47,6 +86,9 @@ input, textarea {
   margin-top: 8px;
   background: #fafafa;
 }
+.sidenav {
+  background: #fafbfd;
+  border-right: 1px solid rgba(0,0,0,0.1);}
 
 input:focus, textarea:focus {
   border-color: #567df4;
@@ -80,6 +122,10 @@ button:hover {
   border: 1px solid #e1e7ff;
   border-radius: 8px;
 }
+.card {
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);}
 
 /* Empty state helper */
 .empty-state {
@@ -95,4 +141,12 @@ footer {
   font-size: 0.8rem;
   text-align: center;
   color: #818181;
+}
+/* Soft section backgrounds */
+.section-background {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 18px;
 }
