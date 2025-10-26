@@ -13,9 +13,10 @@ body {
   color: #222;
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 0px;
   padding-top: 72px; 
 }
+
 
 .brand-logo {
   z-index: 1001;
@@ -32,13 +33,17 @@ nav {
 
 
 .container {
-  width: 100%;
-  max-width: 600px;
-   margin-top: 72px; 
+   margin-top: 72px;
+  width: 90%;     
+  max-width: 1200px; 
+  margin-left: auto;
+  margin-right: auto;
   padding: 25px;
   border-radius: 14px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
+
+
 
 .collection .collection-item {
   border-bottom: 1px solid rgba(0,0,0,0.07);
@@ -63,7 +68,12 @@ nav {
   .row .col.m8 {
     border-right: 1px solid rgba(0,0,0,0.10);
   }
+   .section-background {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
 }
+
 .task-card {
   margin-top: 14px;
   margin-bottom: 8px;
