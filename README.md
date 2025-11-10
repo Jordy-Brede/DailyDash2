@@ -24,11 +24,3 @@ DailyDash is a Progressive Web App (PWA) designed to help users track daily task
 - **Service Worker:** Offline caching and PWA support
 - **Manifest:** PWA installation support
 
----
-
-## Installation / Running Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/dailydash.git
-   cd dailydash
