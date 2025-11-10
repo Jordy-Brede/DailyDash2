@@ -160,6 +160,29 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script type="module">
+  // Firebase App (Core)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  // Firestore
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // Your Firebase config (replace with your actual config)
+  const firebaseConfig = {
+  apiKey: "AIzaSyCKfbYs7QwgMUEWntk0PPCznkGnRnYXdkA",
+  authDomain: "dailydash123.firebaseapp.com",
+  projectId: "dailydash123",
+  storageBucket: "dailydash123.firebasestorage.app",
+  messagingSenderId: "915719372363",
+  appId: "1:915719372363:web:397192cb5e2cbe602e57ce"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  window.db = getFirestore(app);
+</script>
+
+
   <script src="app.js"></script>
 
   <script>

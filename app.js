@@ -1,4 +1,39 @@
-//  - DailyDash prototype script
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+const firebaseConfig = {
+    apiKey: "...",
+    authDomain: "...",
+    projectId: "...",
+    // other config values from Firebase console
+};
+
+const app = initializeApp(firebaseConfig);
+window.db = getFirestore(app);
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+window.db = getFirestore(app);
+
+// IndexedDB Setup
+let dbIndexed;
+const request = indexedDB.open("DailyDashDB", 1);
+
+request.onupgradeneeded = function(e) {
+  dbIndexed = e.target.result;
+  dbIndexed.createObjectStore("tasks", { keyPath: "id" });
+};
+
+request.onsuccess = function(e) {
+  dbIndexed = e.target.result;
+};
+
+request.onerror = function() {
+  console.log("IndexedDB failed to open");
+};
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -29,6 +64,39 @@ document.addEventListener('DOMContentLoaded', function() {
       deferredPrompt = null;
     });
   });
+
+  function saveTaskToIndexedDB(task) {
+  const tx = dbIndexed.transaction("tasks", "readwrite");
+  tx.objectStore("tasks").put(task);
+}
+
+function getTasksFromIndexedDB() {
+  return new Promise((resolve) => {
+    const tx = dbIndexed.transaction("tasks", "readonly");
+    const store = tx.objectStore("tasks");
+    const request = store.getAll();
+    request.onsuccess = () => resolve(request.result);
+  });
+}
+
+function clearIndexedDB() {
+  const tx = dbIndexed.transaction("tasks", "readwrite");
+  tx.objectStore("tasks").clear();
+}
+
+window.addEventListener("online", async () => {
+  const offlineTasks = await getTasksFromIndexedDB();
+  if (offlineTasks.length > 0) {
+    const { collection, addDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+    for (const task of offlineTasks) {
+      await addDoc(collection(window.db, "tasks"), task);
+    }
+    clearIndexedDB();
+    alert("✅ Your offline data has been synced!");
+  }
+});
+
+
 
   function updateOnlineStatus() {
     if (!navigator.onLine) {
@@ -142,12 +210,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  function addTask(task) {
-    const tasks = JSON.parse(localStorage.getItem(TASKS_KEY) || '[]');
-    tasks.unshift(task);
-    localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
-    renderTasks();
-  }
   function completeTask(id) {
     const tasks = JSON.parse(localStorage.getItem(TASKS_KEY) || '[]');
     const idx = tasks.findIndex(t => t.id === id);
@@ -180,20 +242,31 @@ document.addEventListener('DOMContentLoaded', function() {
     renderHabits();
   }
 
-  document.getElementById('taskForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const title = document.getElementById('taskTitle').value.trim();
-    const notes = document.getElementById('taskNotes').value.trim();
-    const due = document.getElementById('taskDue').value || '';
-    if (!title) return M.toast({html: 'Please add a title.'});
-    addTask({
-      id: 't' + Date.now(),
-      title, notes, due, createdAt: new Date().toISOString(), completed: false
-    });
-    const modal = M.Modal.getInstance(document.getElementById('addTaskModal'));
-    modal.close();
-    e.target.reset();
-  });
+ async function addTask(task) {
+  // Update UI immediately
+  const tasks = JSON.parse(localStorage.getItem(TASKS_KEY) || '[]');
+  tasks.unshift(task);
+  localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
+  renderTasks();
+
+  // If offline → store in IndexedDB
+  if (!navigator.onLine) {
+    console.log("Offline — storing task in IndexedDB");
+    saveTaskToIndexedDB(task);
+    return;
+  }
+
+  // If online → send to Firebase
+  try {
+    const { collection, addDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+    await addDoc(collection(window.db, "tasks"), task);
+    console.log("✅ Task stored in Firebase");
+  } catch (err) {
+    console.log("⚠️ Firebase write failed, saving offline instead.", err);
+    saveTaskToIndexedDB(task);
+  }
+}
+
 
   saveNoteBtn.addEventListener('click', () => {
     localStorage.setItem(NOTE_KEY, noteText.value || '');

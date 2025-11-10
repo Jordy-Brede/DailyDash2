@@ -1,61 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Offline | DailyDash</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline — DailyDash</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background: linear-gradient(145deg, #e6e9f0, #eef1f5);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
-
-    .offline-box {
-      background: #fff;
-      padding: 40px;
-      border-radius: 14px;
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
       text-align: center;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-      max-width: 340px;
+      margin: 0;
+      color: #333;
     }
-
-    .offline-box img {
-      width: 70px;
-      opacity: 0.85;
-      margin-bottom: 20px;
+    .offline-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
-    h2 {
-      margin-bottom: 12px;
-      color: #567df4;
+    h1 {
+      color: #d32f2f;
+      margin-bottom: 1rem;
     }
-
     p {
-      margin-bottom: 14px;
-      color: #444;
-      line-height: 1.4;
-    }
-
-    button {
-      margin-top: 18px;
-      width: 100%;
-      background: #567df4;
-      border-radius: 8px;
+      font-size: 1.1rem;
     }
   </style>
 </head>
-
 <body>
-  <div class="offline-box">
-    <img src="images/offline-icon.png" alt="Offline Icon">
-    <h2>You’re Offline</h2>
-    <p>No internet connection detected.<br>
-       You can still view cached content!</p>
-    <button onclick="window.location.reload()">Try Again</button>
+  <div class="offline-card">
+    <h1>⚠️ Offline</h1>
+    <p>Sorry, DailyDash cannot load fully without an internet connection.</p>
+    <p>You can still view cached tasks and habits.</p>
   </div>
 </body>
 </html>
